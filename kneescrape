@@ -19,14 +19,13 @@ try:
 	import string
 	import requests
 	from bs4 import BeautifulSoup as bs
-	import lxml
 except ImportError as ie:
 	print("[-] Missing dependency.")
 	print("[-] %s" % ie)
 	exit(1)
 	
 
-__version__ = 0.1
+__version__ = 0.13
 
 links = []
 pages = []
@@ -34,7 +33,11 @@ base_domain = None
 
 def get_soup_content(url):
 	page = requests.get(url)
-	soup = bs(page.content, 'lxml')
+	try:
+		soup = bs(page.content, "lxml")
+	except:
+		print("[!] You might be missing the lxml library. Try running 'pip install lxml'.")
+		exit(1)
 	return soup
 
 def crawl(url, depth=2, domain=True):
@@ -50,7 +53,7 @@ def crawl(url, depth=2, domain=True):
 	try:
 		soup = get_soup_content(url)
 	except:
-		print("[!] Not a valid URL?")
+		print("[!] Coult not retrieve data from URL.")
 		return
 
 	pages.append(soup)
