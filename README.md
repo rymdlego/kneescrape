@@ -1,8 +1,8 @@
-# KNEESCRAPE
+# Kneescrape
 > Build a targeted dictionary and gather email adresses from any website
 
-A simple script for crawling a website and scrape for email addresses and unique and 
-relevant words for a dictionary.
+A simple infosec tool for crawling a website and scrape for email addresses and unique and 
+relevant words to build a targeted dictionary.
 
 ## Installing / Getting started
 
